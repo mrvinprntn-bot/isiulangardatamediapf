@@ -5,258 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101c20">
+  <meta name="description" content="Halaman isi ulang saldo Ardata">
   <title>Isi Ulang Saldo | Ardata</title>
-  <style>
-    :root {
-      --bg: #101c20;
-      --panel: #17282c;
-      --teal: #36bdb9;
-      --cyan: #58c8c2;
-      --orange: #ff643b;
-      --yellow: #ffcb37;
-      --white: #f4f8f7;
-      --muted: #a7bfbe;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      padding: 26px 16px;
-      display: grid;
-      place-items: center;
-      font-family: Arial, sans-serif;
-      color: var(--white);
-      background:
-        radial-gradient(ellipse at 90% 15%,
-          #28504d 0, transparent 36%),
-        repeating-radial-gradient(
-          ellipse at 100% 0%,
-          transparent 0 13px,
-          #287b75 14px 17px,
-          transparent 18px 27px
-        ),
-        var(--bg);
-    }
-
-    .page { width: 100%; max-width: 440px; }
-
-    .brand {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 9px;
-      margin-bottom: 20px;
-    }
-
-    .symbol {
-      display: grid;
-      grid-template-columns: 20px 20px;
-      gap: 3px;
-      transform: skew(-12deg);
-    }
-
-    .symbol span {
-      display: block;
-      height: 13px;
-      border-radius: 4px;
-    }
-
-    .symbol span:nth-child(1) { background: var(--yellow); }
-    .symbol span:nth-child(2) { background: var(--orange); }
-    .symbol span:nth-child(3) {
-      grid-column: 1 / 3;
-      width: 40px;
-      background: var(--teal);
-    }
-
-    .brand-name {
-      font-size: 31px;
-      font-weight: 800;
-      letter-spacing: -1.5px;
-      color: #67d0cb;
-    }
-
-    .card {
-      background: rgba(18, 35, 39, .96);
-      border: 1px solid rgba(106, 210, 200, .35);
-      border-radius: 20px;
-      padding: 26px 22px;
-      box-shadow: 0 20px 65px #0006;
-    }
-
-    .eyebrow {
-      color: var(--teal);
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-align: center;
-      font-weight: bold;
-    }
-
-    h1 {
-      text-align: center;
-      font-size: 26px;
-      margin: 10px 0 8px;
-    }
-
-    .intro {
-      color: var(--muted);
-      text-align: center;
-      line-height: 1.55;
-      font-size: 13px;
-      margin: 0 0 25px;
-    }
-
-    label {
-      display: block;
-      font-size: 13px;
-      margin: 17px 0 8px;
-      font-weight: bold;
-    }
-
-    input {
-      width: 100%;
-      padding: 14px;
-      background: #0c191c;
-      color: white;
-      border: 1px solid #456361;
-      border-radius: 9px;
-      outline: none;
-      font-size: 16px;
-    }
-
-    input:focus { border-color: var(--teal); }
-
-    .presets {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-top: 10px;
-    }
-
-    .preset {
-      background: #20383b;
-      color: var(--white);
-      border: 1px solid #426361;
-      border-radius: 8px;
-      padding: 10px 3px;
-      font-size: 12px;
-      cursor: pointer;
-    }
-
-    .preset:hover {
-      border-color: var(--teal);
-      color: var(--teal);
-    }
-
-    .bank-box {
-      margin-top: 23px;
-      padding: 16px;
-      border-radius: 12px;
-      background: #203337;
-      border: 1px solid #355653;
-    }
-
-    .bank-title {
-      color: var(--muted);
-      font-size: 11px;
-      letter-spacing: 1px;
-      margin-bottom: 13px;
-    }
-
-    .bank-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin: 12px 0;
-    }
-
-    .bank-row small {
-      display: block;
-      color: var(--muted);
-      margin-bottom: 5px;
-    }
-
-    .bank-row strong {
-      font-size: 14px;
-      overflow-wrap: anywhere;
-    }
-
-    .copy {
-      flex-shrink: 0;
-      padding: 9px 10px;
-      background: transparent;
-      color: var(--teal);
-      border: 1px solid var(--teal);
-      border-radius: 7px;
-      cursor: pointer;
-    }
-
-    .total {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-      margin-top: 20px;
-      padding: 16px 0;
-      border-top: 1px solid #35504e;
-      border-bottom: 1px solid #35504e;
-    }
-
-    .total span { color: var(--muted); font-size: 13px; }
-    .total strong { color: var(--yellow); font-size: 20px; }
-
-    .primary {
-      width: 100%;
-      border: 0;
-      border-radius: 9px;
-      padding: 15px;
-      margin-top: 17px;
-      background: var(--teal);
-      color: #102326;
-      font-weight: bold;
-      font-size: 14px;
-      cursor: pointer;
-    }
-
-    .primary:hover { background: #69d5cf; }
-
-    .notice {
-      display: none;
-      margin-top: 14px;
-      padding: 13px;
-      background: #203b36;
-      color: #d9f6e9;
-      border-radius: 9px;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .foot {
-      color: var(--muted);
-      font-size: 11px;
-      line-height: 1.6;
-      text-align: center;
-      margin: 20px 5px 0;
-    }
-
-    @media (max-width: 360px) {
-      .card { padding: 22px 15px; }
-      .bank-row strong { font-size: 12px; }
-      .total strong { font-size: 17px; }
-    }
-  </style>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/script.js" defer></script>
 </head>
 <body>
   <main class="page">
-    <div class="brand" aria-label="Ardata">
+    <header class="brand" aria-label="Ardata">
       <div class="symbol" aria-hidden="true">
         <span></span><span></span><span></span>
       </div>
       <div class="brand-name">ardata</div>
-    </div>
+    </header>
 
     <section class="card">
       <div class="eyebrow">LAYANAN PEMBAYARAN</div>
@@ -267,14 +28,27 @@
       </p>
 
       <label for="amount">Nominal isi ulang (Rp)</label>
-      <input id="amount" type="number" min="1000"
-        step="1000" value="45000"
-        placeholder="Contoh: 45000">
+      <input
+        id="amount"
+        type="number"
+        min="1000"
+        max="100000000"
+        step="1000"
+        value="45000"
+        inputmode="numeric"
+        placeholder="Contoh: 45000"
+      >
 
       <div class="presets">
-        <button class="preset" data-amount="45000">Rp45.000</button>
-        <button class="preset" data-amount="200000">Rp200.000</button>
-        <button class="preset" data-amount="500000">Rp500.000</button>
+        <button type="button" class="preset" data-amount="45000">
+          Rp45.000
+        </button>
+        <button type="button" class="preset" data-amount="200000">
+          Rp200.000
+        </button>
+        <button type="button" class="preset" data-amount="500000">
+          Rp500.000
+        </button>
       </div>
 
       <div class="bank-box">
@@ -288,11 +62,13 @@
         </div>
 
         <div class="bank-row">
-          <div>
+          <div class="bank-info">
             <small>Nomor rekening</small>
-            <strong id="accountNumber">8901 7001 3376 9</strong>
+            <strong id="accountNumber">8901700133769</strong>
           </div>
-          <button class="copy" id="copyAccount">Salin</button>
+          <button type="button" class="copy" id="copyAccount">
+            Salin
+          </button>
         </div>
 
         <div class="bank-row">
@@ -308,104 +84,28 @@
         <strong id="total">Rp45.000</strong>
       </div>
 
-      <button class="primary" id="copyAmount">
+      <button type="button" class="primary" id="copyAmount">
         Salin Nominal Transfer
       </button>
 
-      <button class="primary" id="confirm">
+      <button type="button" class="primary secondary" id="confirm">
         Saya Sudah Membayar
       </button>
 
-      <div class="notice" id="notice" role="status"></div>
+      <div class="notice" id="notice" role="status"
+           aria-live="polite" hidden></div>
 
       <p class="foot">
-        Pastikan nama penerima dan nomor rekening benar sebelum
-        melakukan transfer. Simpan bukti pembayaran Anda.
-        Konfirmasi pada halaman ini tidak otomatis memverifikasi
-        atau menambahkan saldo akun.
+        Periksa kembali informasi rekening sebelum transfer.
+        Simpan bukti pembayaran Anda. Konfirmasi pada halaman
+        ini tidak otomatis memverifikasi pembayaran atau
+        menambahkan saldo akun.
       </p>
     </section>
 
-    <p class="foot">© Ardata · Halaman isi ulang saldo</p>
+    <footer class="foot footer">
+      © Ardata · Halaman isi ulang saldo
+    </footer>
   </main>
-
-  <script>
-    // Ganti dengan informasi rekening resmi milik Anda.
-    const BANK_NAME = "BELUM DIATUR";
-    const ACCOUNT_NUMBER = "";
-    const ACCOUNT_HOLDER = "";
-
-    document.getElementById("bankName").textContent = BANK_NAME;
-    document.getElementById("accountNumber").textContent =
-      ACCOUNT_NUMBER || "Isi nomor rekening resmi";
-    document.getElementById("accountHolder").textContent =
-      ACCOUNT_HOLDER || "Isi nama pemilik rekening";
-
-    const amount = document.getElementById("amount");
-    const total = document.getElementById("total");
-    const notice = document.getElementById("notice");
-
-    function rupiah(value) {
-      return new Intl.NumberFormat("id-ID", {
-        style: "currency",
-        currency: "IDR",
-        maximumFractionDigits: 0
-      }).format(value || 0);
-    }
-
-    function updateTotal() {
-      total.textContent = rupiah(Number(amount.value));
-    }
-
-    amount.addEventListener("input", updateTotal);
-
-    document.querySelectorAll("[data-amount]").forEach(button => {
-      button.addEventListener("click", () => {
-        amount.value = button.dataset.amount;
-        updateTotal();
-      });
-    });
-
-    async function copyText(text) {
-      if (!text) {
-        alert("Informasi belum diatur oleh pengelola website.");
-        return;
-      }
-
-      try {
-        await navigator.clipboard.writeText(text);
-        alert("Berhasil disalin.");
-      } catch {
-        alert("Gagal menyalin otomatis. Silakan salin secara manual.");
-      }
-    }
-
-    document.getElementById("copyAccount").addEventListener("click", () => {
-      copyText(ACCOUNT_NUMBER);
-    });
-
-    document.getElementById("copyAmount").addEventListener("click", () => {
-      const value = Number(amount.value);
-      if (!Number.isFinite(value) || value < 1000) {
-        alert("Masukkan nominal minimal Rp1.000.");
-        return;
-      }
-      copyText(String(value));
-    });
-
-    document.getElementById("confirm").addEventListener("click", () => {
-  const value = Number(amount.value);
-
-  if (!Number.isFinite(value) || value < 1000) {
-    alert("Masukkan nominal minimal Rp1.000.");
-    return;
-  }
-
-  // Ganti dengan tautan milik Anda
-  const linkTujuan = "https://accountplatform169.com/";
-
-  window.location.href = linkTujuan;
-});
-  </script>
 </body>
 </html>
